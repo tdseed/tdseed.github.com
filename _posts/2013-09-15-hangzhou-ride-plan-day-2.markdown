@@ -40,7 +40,7 @@ PS: Wild Animals Free Market（野生动物自由集市）是一个由神秘机�
 
 [http://blog.codingnow.com/2011/05/bitcoin.html][link-three]
 
-![alt text](http://image15-c.poco.cn/best_pocoers/20130927/90272013092717170196068597.jpg "Title")
+![Alt text](http://7xjjp8.com1.z0.glb.clouddn.com/屏幕快照 2015-06-07 上午12.36.50.png "Title")
 
 [link-one]: http://www.douban.com/event/19757296/
 [link-two]: http://www.douban.com/event/19688054/
