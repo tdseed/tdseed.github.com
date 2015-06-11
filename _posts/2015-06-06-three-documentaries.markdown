@@ -3,6 +3,7 @@ layout: post
 title:  "三部纪录片"
 date:   2015-06-06 23:27:25
 categories: movie
+author: tank
 ---
 
 周末花了点时间看了三部纪录片，分别讲述了少年，青年和老年的故事。
