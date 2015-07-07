@@ -5,6 +5,8 @@ date:   2015-07-07 10:27:25
 categories: think
 ---
 
+![Alt text](http://7xjjp8.com1.z0.glb.clouddn.com/movieduime.png "思考方式")
+
 作者：梁漱溟
 
 梁漱溟
