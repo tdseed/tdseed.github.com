@@ -68,7 +68,7 @@ categories: technology
 * 文件内容（FileContent）与原始文件名（FileName）。
 下面是可用的、最小且完整的上传请求报文模板：
 
-```
+`
 POST / HTTP/1.1
 Host: up.qiniu.com
 Content-Type: multipart/form-data; boundary=<Boundary>
@@ -83,16 +83,16 @@ Content-Disposition: form-data; name="file"; filename="<FileName>"
 
 <FileContent>
 --<Boundary>--
-```
+`
 
 ## 上传授权凭证
 
 本质上，上传并不需要授权，无非是把一团数据发送给服务器。但对于用户而言，任何知晓上传原理的第三方都可能滥用该功能，向服务器提交垃圾数据，或是伪造/篡改数据，侵占存储空间，导致业务风险。因此七牛云使用上传授权凭证（称为UploadToken）来控制谁在什么时刻之前向哪个存储空间上传文件，避免业务风险。
 
 一个有效的上传授权凭证由三部分组成：
-```
+`
 <AccessKey>:<EncodedSign>:<EncodedPutPolicy>
-```
+`
 
 其中，
 
@@ -103,12 +103,12 @@ Content-Disposition: form-data; name="file"; filename="<FileName>"
 ## 上传策略
 
 上传策略是以JSON格式组织的数据对象，用于指定上传请求的各项参数。一个最小的完整示例如下：
-```
+`
 {
         "scope":    "qiniu-ts-demo",
         "deadline": 1388506200
 }
-```
+`
 
 其中，
 
