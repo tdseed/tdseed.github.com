@@ -239,7 +239,7 @@ end
 ```ruby
 
 
-< Great! Now that you have completed the UserRegistration class it's time to change the UsersController to use it.
+> Great! Now that you have completed the UserRegistration class it's time to change the UsersController to use it.
 Make sure to remove the valid_background_check? method, since you moved that into the registration class.
 
 ```ruby
@@ -290,7 +290,7 @@ class UsersController < ApplicationController
 end
 ```
 
-< Let's take a look at the welcome method of the User model.
+> Let's take a look at the welcome method of the User model.
 This method is doing way too many things, you really need to split it up into separate private methods.
 Create the following private methods: send_welcome_email, enable_welcome_tour, enable_welcome_promotion.
 Then move the code from the welcome method into each one.
@@ -339,7 +339,7 @@ class User < ActiveRecord::Base
 end
 ```
 
-< That looks better.
+> That looks better.
 You can take this a step further by extracting out the welcome user functionality into a separate class similar to the UserRegistration class you created a few challenges back.
 This new class should accept an instance of User as an argument for the constructor.
 It should also have an attr_accessor for the user and a welcome method which functions the same as the original welcome method.
