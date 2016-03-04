@@ -61,6 +61,7 @@ end
 ```
 
 review.rb
+
 ```ruby
 class Review < ActiveRecord::Base
   belongs_to :item
@@ -78,6 +79,7 @@ end
 ```
 
 ##-->
+
 ```ruby
 class ReviewsController < ApplicationController
   def create
@@ -128,6 +130,7 @@ end
 ```
 
 ##-->
+
 ```ruby
 class Review < ActiveRecord::Base
   belongs_to :item
@@ -149,17 +152,20 @@ end
 ```
 
 
-#Notice how inside our ItemsController create action we're setting the item.pretty_url attribute.
-# This would be a good method to place inside our model as a callback so it would happen every time the model is saved.
-# Create a set_pretty_url method inside of the Item model and use a before_save callback to call it whenever the model is saved.
-# Make sure the set_pretty_url method is protected so it doesn't accidentally get used outside of the callback.
+> Notice how inside our ItemsController create action we're setting the item.pretty_url attribute.
+This would be a good method to place inside our model as a callback so it would happen every time the model is saved.
+Create a set_pretty_url method inside of the Item model and use a before_save callback to call it whenever the model is saved.
+Make sure the set_pretty_url method is protected so it doesn't accidentally get used outside of the callback.
 
-
+```ruby
 class Item < ActiveRecord::Base
 
 end
+```
 
 ##-->
+
+```ruby
 class Item < ActiveRecord::Base
   before_save :set_pretty_url
 
@@ -168,19 +174,24 @@ class Item < ActiveRecord::Base
       self.pretty_url = name.parameterize
     end
 end
+```
 
-# Let's extract some registration logic out of our controllers into a UserRegistration class.
-# This class should take user_params as arguments to its constructor, which are used to initialize a new User (not create).
-# This newly initialized user should be available as an attr_reader.
-# You'll also want to move the valid_background_check? method into this new class as a private method, we'll use this later to finish creating the User.
+> Let's extract some registration logic out of our controllers into a UserRegistration class.
+This class should take user_params as arguments to its constructor, which are used to initialize a new User (not create).
+This newly initialized user should be available as an attr_reader.
+You'll also want to move the valid_background_check? method into this new class as a private method, we'll use this later to finish creating the User.
 
+```ruby
 class UserRegistration
 
   private
   # private methods go here
 end
+```
 
 ##-->
+
+```ruby
 class UserRegistration
   # Add an `attr_accessor` for :user
   attr_reader :user
@@ -196,6 +207,7 @@ class UserRegistration
     !!(@user.valid_ssn? || @user.valid_address?)
   end
 end
+```
 
 
 # Now let's implement the #create method.
