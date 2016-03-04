@@ -6,27 +6,27 @@ categories: technology
 author: tank
 ---
 
-# LEVEL 1 MODELS
-# LEVEL 1
+LEVEL 1 MODELS
+LEVEL 1
 
-# 2250 Possible Points
-# Level 1 Badge
-# Rails 4 Models
+2250 Possible Points
+Level 1 Badge
+Rails 4 Models
 
-# 1.1 Rails 4 Models
-# 1.2 Skinny Controllers I
-# 1.3 Skinny Controllers II
-# 1.4 ActiveRecord Callbacks
-# 1.5 Non-AR Models - Part I
-# 1.6 Non-AR Models - Part II
-# 1.7 Non-AR Models - Part III
-# 1.8 Skinny Models I
-# 1.9 Skinny Models II
+1.1 Rails 4 Models
+1.2 Skinny Controllers I
+1.3 Skinny Controllers II
+1.4 ActiveRecord Callbacks
+1.5 Non-AR Models - Part I
+1.6 Non-AR Models - Part II
+1.7 Non-AR Models - Part III
+1.8 Skinny Models I
+1.9 Skinny Models II
 
-# Our controllers are kind of chubby, so let's make things better.
-# Combine the two conditionals that involve validating and creating a
-# review into a single conditional that calls@review.add_to_item and returns a boolean.
-# Don't worry, we'll implement this method next.
+> Our controllers are kind of chubby, so let's make things better.
+Combine the two conditionals that involve validating and creating a
+review into a single conditional that calls@review.add_to_item and returns a boolean.
+Don't worry, we'll implement this method next.
 
 ```ruby
 class ReviewsController < ApplicationController
