@@ -28,7 +28,7 @@ author: tank
 # review into a single conditional that calls@review.add_to_item and returns a boolean.
 # Don't worry, we'll implement this method next.
 
-```
+```ruby
 class ReviewsController < ApplicationController
   def create
     @item = Item.find(params[:review][:item_id])
@@ -59,7 +59,7 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:description)
   end
 end
-``
+```
 
 review.rb
 class Review < ActiveRecord::Base
