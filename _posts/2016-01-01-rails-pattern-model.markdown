@@ -1,12 +1,14 @@
 ---
 layout: post
-title:  "rails model refactor"
+title:  "Rails 4 Patterns - Models"
 date:   2016-01-01 23:27:25
 categories: technology
 author: tank
 ---
 
-本文为rails model refactor笔记摘要
+本文为Rails 4 Patterns笔记摘要系列1-models
+Learn helpful patterns and techniques for building and maintaining complex Rails applications. Make your application easily scale in size and complexity.
+
 LEVEL 1 MODELS
 LEVEL 1
 
