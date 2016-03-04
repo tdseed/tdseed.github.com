@@ -236,7 +236,7 @@ class UserRegistration
     !!(@user.valid_ssn? || @user.valid_address?)
   end
 end
-```ruby
+```
 
 
 > Great! Now that you have completed the UserRegistration class it's time to change the UsersController to use it.
