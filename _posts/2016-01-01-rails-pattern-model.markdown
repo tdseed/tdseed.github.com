@@ -9,19 +9,18 @@ author: tank
 LEVEL 1 MODELS
 LEVEL 1
 
-2250 Possible Points
 Level 1 Badge
 Rails 4 Models
 
-1.1 Rails 4 Models
-1.2 Skinny Controllers I
-1.3 Skinny Controllers II
-1.4 ActiveRecord Callbacks
-1.5 Non-AR Models - Part I
-1.6 Non-AR Models - Part II
-1.7 Non-AR Models - Part III
-1.8 Skinny Models I
-1.9 Skinny Models II
+* 1.1 Rails 4 Models
+* 1.2 Skinny Controllers I
+* 1.3 Skinny Controllers II
+* 1.4 ActiveRecord Callbacks
+* 1.5 Non-AR Models - Part I
+* 1.6 Non-AR Models - Part II
+* 1.7 Non-AR Models - Part III
+* 1.8 Skinny Models I
+* 1.9 Skinny Models II
 
 > Our controllers are kind of chubby, so let's make things better.
 Combine the two conditionals that involve validating and creating a
@@ -62,6 +61,7 @@ end
 ```
 
 review.rb
+```ruby
 class Review < ActiveRecord::Base
   belongs_to :item
 
@@ -75,8 +75,10 @@ class Review < ActiveRecord::Base
     description =~ /BAD_WORD/
   end
 end
+```
 
 ##-->
+```ruby
 class ReviewsController < ApplicationController
   def create
     @item = Item.find(params[:review][:item_id])
@@ -104,11 +106,13 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:description)
   end
 end
+```
 
 
-# Now let's implement the add_to_item method.
-# We want to call save only if bad_words? returns false. (Using a guard clause can help here..)
+> Now let's implement the add_to_item method.
+We want to call save only if bad_words? returns false. (Using a guard clause can help here..)
 
+```ruby
 class Review < ActiveRecord::Base
   belongs_to :item
 
@@ -121,9 +125,10 @@ class Review < ActiveRecord::Base
       description =~ /BAD_WORD/
     end
 end
-
+```
 
 ##-->
+```ruby
 class Review < ActiveRecord::Base
   belongs_to :item
 
@@ -141,6 +146,7 @@ class Review < ActiveRecord::Base
     end
 
 end
+```
 
 
 #Notice how inside our ItemsController create action we're setting the item.pretty_url attribute.
