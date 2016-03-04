@@ -6,6 +6,7 @@ categories: technology
 author: tank
 ---
 
+本文为rails model refactor笔记摘要
 LEVEL 1 MODELS
 LEVEL 1
 
@@ -194,11 +195,11 @@ end
 ```
 
 
-# Now let's implement the #create method.
-# First, we need to set user.is_approved to true if valid_background_check? returns true.
-# Then we can call user.save to finish creating the user.
+> Now let's implement the #create method.
+First, we need to set user.is_approved to true if valid_background_check? returns true.
+Then we can call user.save to finish creating the user.
 
-
+```ruby
 class UserRegistration
   attr_reader :user
 
@@ -213,7 +214,7 @@ class UserRegistration
   end
 end
 
-##-->
+  # 重构为
 class UserRegistration
   attr_reader :user
 
@@ -235,12 +236,13 @@ class UserRegistration
     !!(@user.valid_ssn? || @user.valid_address?)
   end
 end
+```ruby
 
 
-# Great! Now that you have completed the UserRegistration class it's time to change the UsersController to use it.
-# Make sure to remove the valid_background_check? method, since you moved that into the registration class.
+< Great! Now that you have completed the UserRegistration class it's time to change the UsersController to use it.
+Make sure to remove the valid_background_check? method, since you moved that into the registration class.
 
-
+```ruby
 class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
@@ -267,7 +269,7 @@ class UsersController < ApplicationController
   end
 end
 
-##-->
+  # 重构为
 class UsersController < ApplicationController
   def create
     registration = UserRegistration.new(user_params)
@@ -286,13 +288,15 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :ssn, :address)
   end
 end
+```
 
-# Let's take a look at the welcome method of the User model.
-# This method is doing way too many things, you really need to split it up into separate private methods.
-# Create the following private methods: send_welcome_email, enable_welcome_tour, enable_welcome_promotion.
-# Then move the code from the welcome method into each one.
-# Make sure to still call each method from within the welcome method.
+< Let's take a look at the welcome method of the User model.
+This method is doing way too many things, you really need to split it up into separate private methods.
+Create the following private methods: send_welcome_email, enable_welcome_tour, enable_welcome_promotion.
+Then move the code from the welcome method into each one.
+Make sure to still call each method from within the welcome method.
 
+```ruby
 class User < ActiveRecord::Base
   def welcome
     # send_welcome_email
@@ -309,7 +313,7 @@ class User < ActiveRecord::Base
 end
 
 
-##-->
+  # 重构为
 class User < ActiveRecord::Base
   def welcome
     send_welcome_email
@@ -333,17 +337,19 @@ class User < ActiveRecord::Base
     promo.set_redeemer(self)
   end
 end
+```
 
-# That looks better.
-# You can take this a step further by extracting out the welcome user functionality into a separate class similar to the UserRegistration class you created a few challenges back.
-# This new class should accept an instance of User as an argument for the constructor.
-# It should also have an attr_accessor for the user and a welcome method which functions the same as the original welcome method.
+< That looks better.
+You can take this a step further by extracting out the welcome user functionality into a separate class similar to the UserRegistration class you created a few challenges back.
+This new class should accept an instance of User as an argument for the constructor.
+It should also have an attr_accessor for the user and a welcome method which functions the same as the original welcome method.
 
+```ruby
 class UserWelcome
 
 end
 
-##-->
+  # 重构为
 class UserWelcome
   # Add an `attr_accessor` for :user
   attr_accessor :user
@@ -377,5 +383,5 @@ class UserWelcome
     promo.set_redeemer(user)
   end
 end
-
+```
 
