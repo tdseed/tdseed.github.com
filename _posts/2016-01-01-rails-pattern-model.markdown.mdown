@@ -59,7 +59,7 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:description)
   end
 end
-```
+``
 
 review.rb
 class Review < ActiveRecord::Base
