@@ -58,11 +58,7 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:description)
   end
 end
-```
 
-review.rb
-
-```ruby
 class Review < ActiveRecord::Base
   belongs_to :item
 
@@ -76,11 +72,8 @@ class Review < ActiveRecord::Base
     description =~ /BAD_WORD/
   end
 end
-```
 
-##-->
-
-```ruby
+  # 重构为
 class ReviewsController < ApplicationController
   def create
     @item = Item.find(params[:review][:item_id])
@@ -127,11 +120,8 @@ class Review < ActiveRecord::Base
       description =~ /BAD_WORD/
     end
 end
-```
 
-##-->
-
-```ruby
+  # 重构为
 class Review < ActiveRecord::Base
   belongs_to :item
 
@@ -161,11 +151,8 @@ Make sure the set_pretty_url method is protected so it doesn't accidentally get 
 class Item < ActiveRecord::Base
 
 end
-```
 
-##-->
-
-```ruby
+  # 重构为
 class Item < ActiveRecord::Base
   before_save :set_pretty_url
 
@@ -187,11 +174,8 @@ class UserRegistration
   private
   # private methods go here
 end
-```
 
-##-->
-
-```ruby
+  # 重构为
 class UserRegistration
   # Add an `attr_accessor` for :user
   attr_reader :user
