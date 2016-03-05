@@ -66,7 +66,7 @@ module Reviewable
   end
 
 end
-``
+```
 
 > We now have a new class method called with_no_reviews, and it looks pretty much the same for both models.
 Extract this method to the Reviewable concern, and make sure it's included inside of the inner module ClassMethods so that it's automatically detected by ActiveSupport::Concern.
