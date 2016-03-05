@@ -8,7 +8,6 @@ author: tank
 
 本文为Rails 4 Patterns笔记摘要系列2-Scopes and Methods
 
-LEVEL 2 SCOPES AND CLASS METHODSLEVEL 21500 Possible PointsLevel 2 Badge
 Scopes and Methods
 
 * 2.1 Scopes and Methods
