@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Rails 4 Patterns - Models"
-date:   2016-01-01 23:27:25
+date:   2015-10-01 23:27:25
 categories: technology
 author: tank
 ---
