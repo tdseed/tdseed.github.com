@@ -6,7 +6,7 @@ categories: technology
 author: tank
 ---
 
-【常规】
+【常规】<br />
 Ctrl+Shift + Enter，语句完成<br />
 “！”，否定完成，输入表达式时按 “！”键<br />
 Ctrl+E，最近的文件<br />
@@ -36,120 +36,120 @@ Alt+Shift+C，最近的更改<br />
 Alt+Shift+Up/Down，上/下移一行<br />
 Shift+F6，重构 - 重命名<br />
 Ctrl+X，删除行<br />
-Ctrl+D，复制行
-Ctrl+/或Ctrl+Shift+/，注释（//或者/**/）
-Ctrl+J，自动代码（例如：serr）
-Ctrl+Alt+J，用动态模板环绕
-Ctrl+H，显示类结构图（类的继承层次）
-Ctrl+Q，显示注释文档
-Alt+F1，查找代码所在位置
-Alt+1，快速打开或隐藏工程面板
-Ctrl+Alt+left/right，返回至上次浏览的位置
-Alt+left/right，切换代码视图
-Alt+Up/Down，在方法间快速移动定位
-Ctrl+Shift+Up/Down，向上/下移动语句
-F2 或 Shift+F2，高亮错误或警告快速定位
-Tab，代码标签输入完成后，按 Tab，生成代码
-Ctrl+Shift+F7，高亮显示所有该文本，按 Esc 高亮消失
-Alt+F3，逐个往下查找相同文本，并高亮显示
-Ctrl+Up/Down，光标中转到第一行或最后一行下
-Ctrl+B/Ctrl+Click，快速打开光标处的类或方法（跳转到定义处）
-Ctrl+Alt+B，跳转到方法实现处
-Ctrl+Shift+Backspace，跳转到上次编辑的地方
-Ctrl+O，重写方法
-Ctrl+Alt+Space，类名自动完成
-Ctrl+Alt+Up/Down，快速跳转搜索结果
-Ctrl+Shift+J，整合两行
-Alt+F8，计算变量值
-Ctrl+Shift+V，可以将最近使用的剪贴板内容选择插入到文本
-Ctrl+Alt+Shift+V，简单粘贴
-Shift+Esc，不仅可以把焦点移到编辑器上，而且还可以隐藏当前（或最后活动的）工具窗口
-F12，把焦点从编辑器移到最近使用的工具窗口
-Shift+F1，要打开编辑器光标字符处使用的类或者方法 Java 文档的浏览器
-Ctrl+W，可以选择单词继而语句继而行继而函数
-Ctrl+Shift+W，取消选择光标所在词
-Alt+F7，查找整个工程中使用地某一个类、方法或者变量的位置
-Ctrl+I，实现方法
-Ctrl+Shift+U，大小写转化
-Ctrl+Y，删除当前行
-Shift+Enter，向下插入新行
-psvm/sout，main/System.out.println(); Ctrl+J，查看更多
-Ctrl+Shift+F，全局查找
-Ctrl+F，查找/Shift+F3，向上查找/F3，向下查找
-Ctrl+Shift+S，高级搜索
-Ctrl+U，转到父类
-Ctrl+Alt+S，打开设置对话框
-Alt+Shift+Inert，开启/关闭列选择模式
-Ctrl+Alt+Shift+S，打开当前项目/模块属性
-Ctrl+G，定位行
-Alt+Home，跳转到导航栏
-Ctrl+Enter，上插一行
-Ctrl+Backspace，按单词删除
-Ctrl+"+/-"，当前方法展开、折叠
-Ctrl+Shift+"+/-"，全部展开、折叠
-【调试部分、编译】
-Ctrl+F2，停止
-Alt+Shift+F9，选择 Debug
-Alt+Shift+F10，选择 Run
-Ctrl+Shift+F9，编译
-Ctrl+Shift+F10，运行
-Ctrl+Shift+F8，查看断点
-F8，步过
-F7，步入
-Shift+F7，智能步入
-Shift+F8，步出
-Alt+Shift+F8，强制步过
-Alt+Shift+F7，强制步入
-Alt+F9，运行至光标处
-Ctrl+Alt+F9，强制运行至光标处
-F9，恢复程序
-Alt+F10，定位到断点
-Ctrl+F8，切换行断点
-Ctrl+F9，生成项目
-Alt+1，项目
-Alt+2，收藏
-Alt+6，TODO
-Alt+7，结构
-Ctrl+Shift+C，复制路径
-Ctrl+Alt+Shift+C，复制引用，必须选择类名
-Ctrl+Alt+Y，同步
-Ctrl+~，快速切换方案（界面外观、代码风格、快捷键映射等菜单）
-Shift+F12，还原默认布局
-Ctrl+Shift+F12，隐藏/恢复所有窗口
-Ctrl+F4，关闭
-Ctrl+Shift+F4，关闭活动选项卡
-Ctrl+Tab，转到下一个拆分器
-Ctrl+Shift+Tab，转到上一个拆分器
-【重构】
-Ctrl+Alt+Shift+T，弹出重构菜单
-Shift+F6，重命名
-F6，移动
-F5，复制
-Alt+Delete，安全删除
-Ctrl+Alt+N，内联
-【查找】
-Ctrl+F，查找
-Ctrl+R，替换
-F3，查找下一个
-Shift+F3，查找上一个
-Ctrl+Shift+F，在路径中查找
-Ctrl+Shift+R，在路径中替换
-Ctrl+Shift+S，搜索结构
-Ctrl+Shift+M，替换结构
-Alt+F7，查找用法
-Ctrl+Alt+F7，显示用法
-Ctrl+F7，在文件中查找用法
-Ctrl+Shift+F7，在文件中高亮显示用法
-【VCS】
-Alt+~，VCS 操作菜单
-Ctrl+K，提交更改
-Ctrl+T，更新项目
-Ctrl+Alt+Shift+D，显示变化
+Ctrl+D，复制行<br />
+Ctrl+/或Ctrl+Shift+/，注释（//或者/**/）<br />
+Ctrl+J，自动代码（例如：serr）<br />
+Ctrl+Alt+J，用动态模板环绕<br />
+Ctrl+H，显示类结构图（类的继承层次）<br />
+Ctrl+Q，显示注释文档<br />
+Alt+F1，查找代码所在位置<br />
+Alt+1，快速打开或隐藏工程面板<br />
+Ctrl+Alt+left/right，返回至上次浏览的位置<br />
+Alt+left/right，切换代码视图<br />
+Alt+Up/Down，在方法间快速移动定位<br />
+Ctrl+Shift+Up/Down，向上/下移动语句<br />
+F2 或 Shift+F2，高亮错误或警告快速定位<br />
+Tab，代码标签输入完成后，按 Tab，生成代码<br />
+Ctrl+Shift+F7，高亮显示所有该文本，按 Esc 高亮消失<br />
+Alt+F3，逐个往下查找相同文本，并高亮显示<br />
+Ctrl+Up/Down，光标中转到第一行或最后一行下<br />
+Ctrl+B/Ctrl+Click，快速打开光标处的类或方法（跳转到定义处）<br />
+Ctrl+Alt+B，跳转到方法实现处<br />
+Ctrl+Shift+Backspace，跳转到上次编辑的地方<br />
+Ctrl+O，重写方法<br />
+Ctrl+Alt+Space，类名自动完成<br />
+Ctrl+Alt+Up/Down，快速跳转搜索结果<br />
+Ctrl+Shift+J，整合两行<br />
+Alt+F8，计算变量值<br />
+Ctrl+Shift+V，可以将最近使用的剪贴板内容选择插入到文本<br />
+Ctrl+Alt+Shift+V，简单粘贴<br />
+Shift+Esc，不仅可以把焦点移到编辑器上，而且还可以隐藏当前（或最后活动的）工具窗口<br />
+F12，把焦点从编辑器移到最近使用的工具窗口<br />
+Shift+F1，要打开编辑器光标字符处使用的类或者方法 Java 文档的浏览器<br />
+Ctrl+W，可以选择单词继而语句继而行继而函数<br />
+Ctrl+Shift+W，取消选择光标所在词<br />
+Alt+F7，查找整个工程中使用地某一个类、方法或者变量的位置<br />
+Ctrl+I，实现方法<br />
+Ctrl+Shift+U，大小写转化<br />
+Ctrl+Y，删除当前行<br />
+Shift+Enter，向下插入新行<br />
+psvm/sout，main/System.out.println(); Ctrl+J，查看更多<br />
+Ctrl+Shift+F，全局查找<br />
+Ctrl+F，查找/Shift+F3，向上查找/F3，向下查找<br />
+Ctrl+Shift+S，高级搜索<br />
+Ctrl+U，转到父类<br />
+Ctrl+Alt+S，打开设置对话框<br />
+Alt+Shift+Inert，开启/关闭列选择模式<br />
+Ctrl+Alt+Shift+S，打开当前项目/模块属性<br />
+Ctrl+G，定位行<br />
+Alt+Home，跳转到导航栏<br />
+Ctrl+Enter，上插一行<br />
+Ctrl+Backspace，按单词删除<br />
+Ctrl+"+/-"，当前方法展开、折叠<br />
+Ctrl+Shift+"+/-"，全部展开、折叠<br />
+【调试部分、编译】<br />
+Ctrl+F2，停止<br />
+Alt+Shift+F9，选择 Debug<br />
+Alt+Shift+F10，选择 Run<br />
+Ctrl+Shift+F9，编译<br />
+Ctrl+Shift+F10，运行<br />
+Ctrl+Shift+F8，查看断点<br />
+F8，步过<br />
+F7，步入<br />
+Shift+F7，智能步入<br />
+Shift+F8，步出<br />
+Alt+Shift+F8，强制步过<br />
+Alt+Shift+F7，强制步入<br />
+Alt+F9，运行至光标处<br />
+Ctrl+Alt+F9，强制运行至光标处<br />
+F9，恢复程序<br />
+Alt+F10，定位到断点<br />
+Ctrl+F8，切换行断点<br />
+Ctrl+F9，生成项目<br />
+Alt+1，项目<br />
+Alt+2，收藏<br />
+Alt+6，TODO<br />
+Alt+7，结构<br />
+Ctrl+Shift+C，复制路径<br />
+Ctrl+Alt+Shift+C，复制引用，必须选择类名<br />
+Ctrl+Alt+Y，同步<br />
+Ctrl+~，快速切换方案（界面外观、代码风格、快捷键映射等菜单）<br />
+Shift+F12，还原默认布局<br />
+Ctrl+Shift+F12，隐藏/恢复所有窗口<br />
+Ctrl+F4，关闭<br />
+Ctrl+Shift+F4，关闭活动选项卡<br />
+Ctrl+Tab，转到下一个拆分器<br />
+Ctrl+Shift+Tab，转到上一个拆分器<br />
+【重构】<br />
+Ctrl+Alt+Shift+T，弹出重构菜单<br />
+Shift+F6，重命名<br />
+F6，移动<br />
+F5，复制<br />
+Alt+Delete，安全删除<br />
+Ctrl+Alt+N，内联<br />
+【查找】<br />
+Ctrl+F，查找<br />
+Ctrl+R，替换<br />
+F3，查找下一个<br />
+Shift+F3，查找上一个<br />
+Ctrl+Shift+F，在路径中查找<br />
+Ctrl+Shift+R，在路径中替换<br />
+Ctrl+Shift+S，搜索结构<br />
+Ctrl+Shift+M，替换结构<br />
+Alt+F7，查找用法<br />
+Ctrl+Alt+F7，显示用法<br />
+Ctrl+F7，在文件中查找用法<br />
+Ctrl+Shift+F7，在文件中高亮显示用法<br />
+【VCS】<br />
+Alt+~，VCS 操作菜单<br />
+Ctrl+K，提交更改<br />
+Ctrl+T，更新项目<br />
+Ctrl+Alt+Shift+D，显示变化<br />
 
 参考http://zyjustin9.iteye.com/blog/2172445
 
-通过Modules的Dependencies添加：(推荐)
-1.打开 File -> Project Structure （Ctrl + Shift + Alt + S）
-2.单击 Modules -> Dependencies -> "+" -> "Jars or directories"
-3.选择硬盘上的jar包
-4.Apply -> OK
+通过Modules的Dependencies添加：(推荐)<br />
+1.打开 File -> Project Structure （Ctrl + Shift + Alt + S）<br />
+2.单击 Modules -> Dependencies -> "+" -> "Jars or directories"<br />
+3.选择硬盘上的jar包<br />
+4.Apply -> OK<br />
