@@ -255,9 +255,9 @@ In centos 7+, 可以:
 一开始看了带日期的日志, 看到的log很少，发现不了问题。。。
 
 我们现在的项目是把数据库配置文件放在代码库里面，要想在本地和线上共用数据库配置一般有三种方式：
-1. spring <profiles></profiles>
-2. 让项目在不同的环境加载不同的配置文件，http://www.dexcoder.com/selfly/article/3558
-3. dorker的方式
+1.  spring profiles标签
+2.  让项目在不同的环境加载不同的配置文件，http://www.dexcoder.com/selfly/article/3558
+3.  dorker的方式
 
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-centos-6
 
@@ -415,14 +415,23 @@ vi /usr/local/tomcat7/conf/server.xml
 http://115.159.222.13:8080/WindChat/user/57591993eed0931dcf282c8c/friendship/list
 
 ## 6.安装nginx
+
 ## 7.自动化部署
+
 未完待续
 
 参考链接：
+
 https://www.digitalocean.com/community/tutorials/how-to-add-and-delete-users-on-ubuntu-12-04-and-centos-6
+
 https://www.digitalocean.com/community/tutorials/how-to-edit-the-sudoers-file-on-ubuntu-and-centos
+
 http://shuyangyang.blog.51cto.com/1685768/1040127
+
 http://blog.csdn.net/cangchen/article/details/44492753
+
 http://blog.csdn.net/sonnet123/article/details/9169741
+
 http://tecadmin.net/steps-to-install-tomcat-server-on-centos-rhel/#
+
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-centos-6
