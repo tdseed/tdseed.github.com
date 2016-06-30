@@ -6,27 +6,35 @@ categories: technology
 author: tank
 ---
 
-## 前期准备
+## 1.前期准备
 先确定一下云服务器的系统
+```shell
 [root@Test-WindChat /]# cat /etc/redhat-release
 CentOS release 6.5 (Final)
+```
 
 http://www.bkjia.com/Linuxjc/1128322.html
 
 这里CentOS 6.5 和7及以上版本一些命令还是有区别的，比如6.5没有systemctl。。。。
 用到的软件都在这里 http://10.0.1.231:11231/linux/
 
+```shell
 ssh-copy-id root@10.0.1.249
+```
 
 ssh-copy-id只是帮你创建authorized_keys,并把你的公钥放进去，就是这里的东西 ~/.ssh/id_rsa.pub
 
+```shell
 brew install ssh-copy-id
 
 ssh-copy-id root@10.0.1.249
+```
 
 登进去之后，我们可以创建权限低一点的用户，用来之后的部署
+```shell
 sudo adduser deploy
 passwd deploy
+```
 
 然后把deploy放入sudo组里
 
@@ -55,23 +63,28 @@ deploy  ALL=(ALL)       ALL
 
 deploy is not in the sudoers file.  This incident will be reported.
 如果发现用户创建的不对可以这样撤回
+```shell
 sudo userdel -r deploy
 sudo rm -rf /home/deploy
 
 su deploy
+```
 
 测试加入了sudo组
+```shell
 sudo ls
 
 ssh-copy-id deploy@10.0.1.249
 
 ssh deploy@10.0.1.249
+```
 现在就可以这样ssh到服务器，不过要管理很多服务器的话可以用一些更方便的一键进入方法
 
-## 安装jdk:
+## 2.安装jdk:
 http://blog.csdn.net/sonnet123/article/details/9169741
 www.cnblogs.com/always-online/p/4691507.html
 
+```shell
 ssh deploy@10.0.1.249
 
 cd /tmp/
@@ -84,43 +97,57 @@ centos : sudo yum -y install wget
 cd /tmp/
 
 wget http://10.0.1.231:11231/linux/jdk/jdk-7u79-linux-x64.rpm
+```
 
-### 复制到/usr/Java/路径下
+#### 复制到/usr/Java/路径下
+```shell
 sudo mkdir /usr/java/
 sudo cp jdk-7u79-linux-x64.rpm /usr/java/
+```
 
-### 添加可执行权限，并安装
+#### 添加可执行权限，并安装
+```shell
 cd /usr/java/
 sudo chmod +x jdk-7u79-linux-x64.rpm
 sudo rpm -ivh jdk-7u79-linux-x64.rpm
+```
 
-### 配置环境变量
+#### 配置环境变量
 
 1.进入编辑profile文件
+```shell
 sudo vi /etc/profile
+```
 
 2.在profile文件最后追加入如下内容
+```shell
 export JAVA_HOME=/usr/java/jdk1.7.0_79
 export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 export PATH=$PATH:$JAVA_HOME/bin
+```
 
 3.保存并退出，执行如下
+```shell
 [deploy@Test-WindChat java]$ source /etc/profile
 [deploy@Test-WindChat java]$ java -version
 java version "1.7.0_79"
 Java(TM) SE Runtime Environment (build 1.7.0_79-b15)
 Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)
+```
 
-## 安装Tomcat
+## 3.安装Tomcat
 
 这里如果考虑到安全的话，可以创建无特权的tomcat用户，比如
+```shell
 sudo groupadd tomcat，
 sudo useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat
+```
 这样就把tomcat用户创建好了
 
 https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-8-on-centos-7
 
-### 下载Tomcat
+#### 下载Tomcat
+```shell
 cd /tmp
 
 wget http://10.0.1.231:11231/linux/tomcat/apache-tomcat-7.0.68.tar.gz
@@ -128,12 +155,14 @@ wget http://10.0.1.231:11231/linux/tomcat/apache-tomcat-7.0.68.tar.gz
 tar xzf apache-tomcat-7.0.68.tar.gz
 
 mv apache-tomcat-7.0.68 /usr/local/tomcat7
+```
 我把tomcat放到/usr/local下
 
-### 开启Tomcat
-
+#### 开启Tomcat
+```shell
 cd /usr/local/tomcat7
 ./bin/startup.sh
+```
 
 如果是centos7或以上可以使用systemctl开关
 这里如果要测试Tomcat是否工作，可以看http://10.0.1.231:8080，不过得配置一下云服务的安全策略，如果是linux安全策略的话，外网只有22端口是开着的，要想在外网开8080需要设置一下
@@ -141,10 +170,10 @@ cd /usr/local/tomcat7
 http://tecadmin.net/steps-to-install-tomcat-server-on-centos-rhel/#
 
 
-## 安装postgresql
+## 4.安装postgresql
 
-### 下载安装
-
+#### 下载安装
+```shell
 cd /tmp
 
 wget http://10.0.1.231:11231/linux/pgsql/pgdg-centos92-9.2-7.noarch.rpm
@@ -152,30 +181,41 @@ wget http://10.0.1.231:11231/linux/pgsql/pgdg-centos92-9.2-7.noarch.rpm
 rpm -ivh pgdg-centos92-9.2-7.noarch.rpm
 
 yum list postgres*
+```
 
 发现postgresql92-server.x86_64
 
+```shell
 yum install postgresql92-server
+```
 
-### 初始化数据库环境
+#### 初始化数据库环境
 
 初始化环境
+```shell
 service postgresql-9.2 initdb
+```
 
 然后配置开机启动pgsql
+```shell
 chkconfig postgresql-9.2 on
+```
 
 开启
+```shell
 service postgresql-9.2 start
+```
 
 In centos 7+, 可以:
+```shell
  systemctl enable postgresql
+```
 
 开启后可以在deploy用户下psql -U postgres
 然后把项目需要的sql跑一跑
 
 
-## 部署应用
+## 5.部署应用
 这里先用比较傻瓜的gui的方式，放war包
 
 修改tomcat conf/tomcat-users.xml，在文件里面加上下面的配置
@@ -199,24 +239,31 @@ In centos 7+, 可以:
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-centos-6
 
 接下来就是我在搭建数据库配合部署时遇到的问题，主要与pg_hba.conf相关
+```shell
 [deploy@VM_114_114_centos tmp]$ psql -U postgres
 psql: FATAL:  Peer authentication failed for user "postgres"
 
 sudo su - postgres
 
 sudo service postgresql-9.2 stop
+```
+
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-centos-7
 
+```shell
 INFO: validateJarFile(/usr/local/tomcat7/webapps/WindChat/WEB-INF/lib/javax.servlet-api-3.0.1.jar) - jar not loaded. See Servlet Spec 3.0, section 10.7.2. Offending class: javax/servlet/Servlet.class
 
 scp jdk-7u79-linux-x64.rpm deploy@115.159.222.13:/tmp
+```
 
+```shell
 [deploy@VM_114_114_centos lib]$ ls
 annotations-api.jar  catalina.jar   jasper.jar       tomcat-coyote.jar   tomcat-i18n-ja.jar websocket-api.jar
 catalina-ant.jar     ecj-4.4.2.jar  jsp-api.jar      tomcat-dbcp.jar   tomcat-jdbc.jar
 catalina-ha.jar      el-api.jar     servlet-api.jar  tomcat-i18n-es.jar  tomcat-util.jar
 catalina-tribes.jar  jasper-el.jar  tomcat-api.jar   tomcat-i18n-fr.jar  tomcat7-websocket.jar
-
+```
+```shell
 [deploy@VM_114_114_centos logs]$ psql -U postgres
 psql: FATAL:  Peer authentication failed for user "postgres"
 
@@ -224,6 +271,7 @@ find / -name pg_hba.conf
 
 [root@VM_114_114_centos bin]# service postgresql-9.2 restart
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-centos-6
+```
 
 遇到问题：
 com.alibaba.druid.pool.DruidDataSource.init datasource error, url: jdbc:postgresql://localhost:5432/windchat?charSet=utf-8(643)
@@ -303,12 +351,16 @@ host    all             all             ::1/128                 md5
 Exception in thread "http-bio-8080-exec-55"
 Exception: java.lang.OutOfMemoryError thrown from the UncaughtExceptionHandler in thread "http-bio-8080-exec-55"
 
+```shell
 [deploy@VM_114_114_centos bin]$ pwd
 /usr/local/tomcat7/bin
 [deploy@VM_114_114_centos bin]$ vi catalina.bat
+```
 
 加上这一行
+```shell
 set JAVA_OPTS= -Xms1024M -Xmx1024M -XX:PermSize=256M -XX:MaxNewSize=256M -XX:MaxPermSize=256M
+```
 
 解释一下各个参数：
 
@@ -323,15 +375,19 @@ set JAVA_OPTS= -Xms1024M -Xmx1024M -XX:PermSize=256M -XX:MaxNewSize=256M -XX:Max
 那接下来如果使用自己写的api呢？
 参考http://blog.csdn.net/cangchen/article/details/44492753
 
+```shell
 vi /usr/local/tomcat7/conf/server.xml
+```
 在<Host>下加
+```shell
 <Context path="/" docBase="WindChat.war" debug="0" privileged="true" reloadable="true"/>
+```
 
 类似的api就可以跑了，可以测试
 http://115.159.222.13:8080/WindChat/user/57591993eed0931dcf282c8c/friendship/list
 
-## 安装nginx
-## 自动化部署
+## 6.安装nginx
+## 7.自动化部署
 未完待续
 
 参考链接：
