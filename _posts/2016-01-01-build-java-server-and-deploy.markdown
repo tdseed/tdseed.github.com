@@ -8,6 +8,7 @@ author: tank
 
 ## 1.前期准备
 先确定一下云服务器的系统
+
 ```shell
 [root@Test-WindChat /]# cat /etc/redhat-release
 CentOS release 6.5 (Final)
@@ -31,6 +32,7 @@ ssh-copy-id root@10.0.1.249
 ```
 
 登进去之后，我们可以创建权限低一点的用户，用来之后的部署
+
 ```shell
 sudo adduser deploy
 passwd deploy
@@ -63,6 +65,7 @@ deploy  ALL=(ALL)       ALL
 
 deploy is not in the sudoers file.  This incident will be reported.
 如果发现用户创建的不对可以这样撤回
+
 ```shell
 sudo userdel -r deploy
 sudo rm -rf /home/deploy
@@ -71,6 +74,7 @@ su deploy
 ```
 
 测试加入了sudo组
+
 ```shell
 sudo ls
 
@@ -78,10 +82,12 @@ ssh-copy-id deploy@10.0.1.249
 
 ssh deploy@10.0.1.249
 ```
+
 现在就可以这样ssh到服务器，不过要管理很多服务器的话可以用一些更方便的一键进入方法
 
 ## 2.安装jdk:
 http://blog.csdn.net/sonnet123/article/details/9169741
+
 www.cnblogs.com/always-online/p/4691507.html
 
 ```shell
@@ -90,22 +96,26 @@ ssh deploy@10.0.1.249
 cd /tmp/
 
 sudo yum -y install wget
+```
 
 debian 或者 ubuntu : sudo apt-get install wget
 centos : sudo yum -y install wget
 
+```shell
 cd /tmp/
 
 wget http://10.0.1.231:11231/linux/jdk/jdk-7u79-linux-x64.rpm
 ```
 
 #### 复制到/usr/Java/路径下
+
 ```shell
 sudo mkdir /usr/java/
 sudo cp jdk-7u79-linux-x64.rpm /usr/java/
 ```
 
 #### 添加可执行权限，并安装
+
 ```shell
 cd /usr/java/
 sudo chmod +x jdk-7u79-linux-x64.rpm
@@ -115,11 +125,13 @@ sudo rpm -ivh jdk-7u79-linux-x64.rpm
 #### 配置环境变量
 
 1.进入编辑profile文件
+
 ```shell
 sudo vi /etc/profile
 ```
 
 2.在profile文件最后追加入如下内容
+
 ```shell
 export JAVA_HOME=/usr/java/jdk1.7.0_79
 export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
@@ -127,6 +139,7 @@ export PATH=$PATH:$JAVA_HOME/bin
 ```
 
 3.保存并退出，执行如下
+
 ```shell
 [deploy@Test-WindChat java]$ source /etc/profile
 [deploy@Test-WindChat java]$ java -version
@@ -138,15 +151,18 @@ Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)
 ## 3.安装Tomcat
 
 这里如果考虑到安全的话，可以创建无特权的tomcat用户，比如
+
 ```shell
 sudo groupadd tomcat，
 sudo useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat
 ```
+
 这样就把tomcat用户创建好了
 
 https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-8-on-centos-7
 
 #### 下载Tomcat
+
 ```shell
 cd /tmp
 
@@ -156,9 +172,11 @@ tar xzf apache-tomcat-7.0.68.tar.gz
 
 mv apache-tomcat-7.0.68 /usr/local/tomcat7
 ```
+
 我把tomcat放到/usr/local下
 
 #### 开启Tomcat
+
 ```shell
 cd /usr/local/tomcat7
 ./bin/startup.sh
@@ -173,6 +191,7 @@ http://tecadmin.net/steps-to-install-tomcat-server-on-centos-rhel/#
 ## 4.安装postgresql
 
 #### 下载安装
+
 ```shell
 cd /tmp
 
@@ -192,21 +211,25 @@ yum install postgresql92-server
 #### 初始化数据库环境
 
 初始化环境
+
 ```shell
 service postgresql-9.2 initdb
 ```
 
 然后配置开机启动pgsql
+
 ```shell
 chkconfig postgresql-9.2 on
 ```
 
 开启
+
 ```shell
 service postgresql-9.2 start
 ```
 
 In centos 7+, 可以:
+
 ```shell
  systemctl enable postgresql
 ```
@@ -239,6 +262,7 @@ In centos 7+, 可以:
 https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-centos-6
 
 接下来就是我在搭建数据库配合部署时遇到的问题，主要与pg_hba.conf相关
+
 ```shell
 [deploy@VM_114_114_centos tmp]$ psql -U postgres
 psql: FATAL:  Peer authentication failed for user "postgres"
@@ -263,6 +287,7 @@ catalina-ant.jar     ecj-4.4.2.jar  jsp-api.jar      tomcat-dbcp.jar   tomcat-jd
 catalina-ha.jar      el-api.jar     servlet-api.jar  tomcat-i18n-es.jar  tomcat-util.jar
 catalina-tribes.jar  jasper-el.jar  tomcat-api.jar   tomcat-i18n-fr.jar  tomcat7-websocket.jar
 ```
+
 ```shell
 [deploy@VM_114_114_centos logs]$ psql -U postgres
 psql: FATAL:  Peer authentication failed for user "postgres"
@@ -358,6 +383,7 @@ Exception: java.lang.OutOfMemoryError thrown from the UncaughtExceptionHandler i
 ```
 
 加上这一行
+
 ```shell
 set JAVA_OPTS= -Xms1024M -Xmx1024M -XX:PermSize=256M -XX:MaxNewSize=256M -XX:MaxPermSize=256M
 ```
@@ -378,7 +404,9 @@ set JAVA_OPTS= -Xms1024M -Xmx1024M -XX:PermSize=256M -XX:MaxNewSize=256M -XX:Max
 ```shell
 vi /usr/local/tomcat7/conf/server.xml
 ```
+
 在<Host>下加
+
 ```shell
 <Context path="/" docBase="WindChat.war" debug="0" privileged="true" reloadable="true"/>
 ```
