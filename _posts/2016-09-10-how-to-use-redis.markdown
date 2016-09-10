@@ -61,7 +61,7 @@ Redis 的 Pub/Sub 系统可以构建实时的消息系统，比如很多用 Pub/
 ## 简单分析：
 redis有自己的api支持java、ruby等很多语言
 每种语言都可能封装库来让redis的操作更加方便，如ruby圈有redis-rb，而ohm又做了层抽象，Object-Hash Mapping。。
-redis有不同的数据类型，灵活的选择使用，strings, hashes, sets, sorted sets
+redis有不同的数据类型，灵活的选择使用，strings, lists, hashes, sets, sorted sets
 还有redis常用命令、高级用法等
 
 当时的有一款基于地理位置的社交app，后端设计很多不同的redis key，
