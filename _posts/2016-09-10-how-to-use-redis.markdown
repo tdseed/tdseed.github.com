@@ -12,6 +12,7 @@ Redis 的 List 集合中，并将超出集合部分从数据库获取。
 使用 LPUSH latest.comments<ID>命令，向 list 集合中插入数据
 插入完成后再用 LTRIM latest.comments 0 5000 命令使其永远只保存最近 5000 个 ID
 然后我们在客户端获取某一页评论时可以用下面的逻辑
+
 ```javascript
     FUNCTION get_latest_comments(start,num_items):
      id_list = redis.lrange("latest.comments",start,start+num_items-1)
@@ -21,6 +22,7 @@ Redis 的 List 集合中，并将超出集合部分从数据库获取。
      RETURN id_list
     END
 ```
+
 如果你还有不同的筛选维度，比如某个分类的最新 N 条，那么你可以再建一个按此分类的
 List，只存 ID 的话，Redis 是非常高效的。
 
