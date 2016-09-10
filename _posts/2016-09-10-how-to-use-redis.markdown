@@ -87,3 +87,5 @@ Redis集合能很好的表示关系。你可以创建一个tagging系统，然�
 Key-Value Store 更加注重对海量数据存取的性能、分布式、扩展性支持上，并不需要传统
 关系数据库的一些特征，例如：Schema、事务、完整 SQL 查询支持等等，因此在分布式环
 境下的性能相对于传统的关系数据库有较大的提升。
+
+http://blog.csdn.net/neosmith/article/details/46811089
