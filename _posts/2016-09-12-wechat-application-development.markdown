@@ -105,4 +105,4 @@ rails应用服务器用的puma (http://puma.io/)，这个相对应java的Tomcat�
 
 ## 我搭建的测试号
 
-![Alt text](http://7xjjp8.com1.z0.glb.clouddn.com/0.jpg 2016-09-12 上午12.36.50.png "weixin")
+![Alt text](http://7xjjp8.com1.z0.glb.clouddn.com/0.jpg "weixin")
