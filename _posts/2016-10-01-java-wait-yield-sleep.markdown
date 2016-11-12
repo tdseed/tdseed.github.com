@@ -34,6 +34,7 @@ author: tank
 
 
 ## 四、wait()和notify(),notifyAll()是Object类的方法，sleep()和yield()是Thread类的方法。
+
 ### (1)、常用的wait方法有wait()和wait(long timeout);
   void wait() 在其他线程调用此对象的 notify() 方法或者 notifyAll()方法前，导致当前线程等待。
   void wait(long timeout)在其他线程调用此对象的notify() 方法 或者 notifyAll()方法，或者超过指定的时间量前，导致当前线程等待。
